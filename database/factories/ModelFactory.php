@@ -20,18 +20,18 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
 $factory->define(App\Subbreddit::class, function (Faker\Generator $faker) {
     return [
         'name' => $faker->word,
-        'description' => $faker->text
+        'description' => $faker->realText($maxNbChars = 140, $indexSize = 2)
     ];
 });
 $factory->define(App\Post::class, function (Faker\Generator $faker) {
     return [
         'url' => $faker->url,
-        'title' => $faker->sentence,
-        'content' => $faker->text
+        'title' => $faker->realText($maxNbChars = 100, $indexSize = 2),
+        'content' => $faker->realText($maxNbChars = 200, $indexSize = 2)
     ];
 });
 $factory->define(App\Comment::class, function (Faker\Generator $faker) {
     return [
-        'content' => $faker->text,
+        'content' => $faker->realText($maxNbChars = 300, $indexSize = 2),
     ];
 });
