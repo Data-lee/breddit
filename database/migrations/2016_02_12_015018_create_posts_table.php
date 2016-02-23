@@ -17,8 +17,8 @@ class CreatePostsTable extends Migration
             $table->string('title');
             $table->text('content');
             $table->string('url')->nullable();
-            $table->integer('user_id')->unsigned();
-            $table->integer('subbreddit_id')->unsigned();
+            $table->integer('user_id')->unsigned()->index();
+            $table->integer('subbreddit_id')->unsigned()->index();
             $table->timestamps();
         });
     }
