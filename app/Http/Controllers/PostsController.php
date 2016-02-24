@@ -30,7 +30,7 @@ class PostsController extends Controller
         $post = new \App\Post;
         $post->title = $request->title;
         $post->content = $request->post_content;
-        $post->user_id = Auth::user()->id;
+        $post->user_id = \Auth::user()->id;
         $post->url = $request->url;
         $post->save();
 

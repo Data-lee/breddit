@@ -28,7 +28,7 @@ class SubbredditsController extends Controller
     public function store(Request $request)
     {
         $subbreddit = new \App\Subbreddit;
-        $subbreddit->user_id = Auth::user()->id;
+        $subbreddit->user_id = \Auth::user()->id;
         $subbreddit->title = $request->title;
         $subbreddit->content = $request->content;
 
