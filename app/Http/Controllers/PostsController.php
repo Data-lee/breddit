@@ -30,8 +30,10 @@ class PostsController extends Controller
         $post = new \App\Post;
         $post->title = $request->title;
         $post->content = $request->post_content;
+        $post->subbreddit_it = $request->subbreddit_id;
         $post->user_id = \Auth::user()->id;
         $post->url = $request->url;
+        
         $post->save();
 
         return $post;
@@ -45,10 +47,7 @@ class PostsController extends Controller
      */
     public function show($id)
     {
-        return \App\Post::with([
-            'comments.childComments',
-            'user'
-            ])->find($id);
+        return \App\Post::with('subbreddit')->get();
     }
 
     /**
@@ -61,11 +60,15 @@ class PostsController extends Controller
     public function update(Request $request, $id)
     {
         $post = \App\Post::find($id);
-        $post->title = $request->title;
-        $post->content = $request->post_content;
-        $post->url = $request->url;
-        $post->save();
-
+        if ($post->user_id == \Auth:: user()->id) {
+            $post->title = $request->title;
+            $post->content = $request->post_content;
+            $post->url = $request->url;
+        
+            $post->save();
+        } else {
+            return response("Unauthorized", 403);
+        }
         return $post;
     }
 
@@ -78,7 +81,11 @@ class PostsController extends Controller
     public function destroy($id)
     {
         $post = \App\post::find($id);
-        $post->delete();
+        if ($post->user_id == \Auth::user()->id) {
+            $post->delete();
+        } else {
+            return response("Unauthorized", 403);
+        } 
         return $post;    
     }
 }

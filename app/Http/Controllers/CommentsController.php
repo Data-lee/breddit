@@ -32,6 +32,9 @@ class commentsController extends Controller
         $comment->user_id = \Auth::user()->id;
         $comment->post_id = $request->post_id;
         $comment->comment_id = $request->comment_id;
+        $comment->save();
+
+        return $comment;
     }
 
     /**
@@ -42,10 +45,7 @@ class commentsController extends Controller
      */
     public function show($id)
     {
-        return \App\comment::with([
-            'childComments',
-            'user'
-            ])->find($id);
+        return \App\comment::find($id);
     }
 
     /**
@@ -58,10 +58,12 @@ class commentsController extends Controller
     public function update(Request $request, $id)
     {
         $comment = \App\comment::find($id);
-        $comment->content = $request->comment_content;
-        $comment->post_id = $request->post_id;
-        $comment->comment_id = $request->comment_id;
-        $comment->save();
+        if ($comment->user_id == \Auth:: user()->id) {
+            $comment->content = $request->comment_content;
+            $comment->save();
+        } else {
+            return response("Unauthorized", 403);
+        }
 
         return $comment;
     }
@@ -75,7 +77,11 @@ class commentsController extends Controller
     public function destroy($id)
     {
         $comment = \App\comment::find($id);
-        $comment->delete();
-        return $comment;    
+        if ($comment->user_id == \Auth::user()->id) {
+            $comment->delete();
+        } else {
+            return response("Unauthorized", 403);
+        }
+        return $comment;   
     }
 }

@@ -24,6 +24,9 @@
 */
 
 Route::group(['middleware' => ['web']], function () {
+    Route::auth();
+
+    // this is where our app lives
     Route::get('/', function () {
     return view('welcome');
 });
