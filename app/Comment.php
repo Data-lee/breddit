@@ -21,6 +21,7 @@ class Comment extends Model
     {
     	return $this->belongsTo('App\Post');
     }
+    
     /**
     * Get the parent comment that owns the comment.
     */
