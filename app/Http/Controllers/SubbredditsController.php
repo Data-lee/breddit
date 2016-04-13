@@ -16,7 +16,11 @@ class SubbredditsController extends Controller
      */
     public function index()
     {
+<<<<<<< HEAD
         return \App\Subbreddit::all();
+=======
+       return \App\Subbreddit::all();
+>>>>>>> 4a9aa119d6085d75b86b38cba17e6ea3f6f209c5
     }
 
     /**
@@ -31,6 +35,10 @@ class SubbredditsController extends Controller
         $subbreddit->user_id = \Auth::user()->id;
         $subbreddit->name = $request->name;
         $subbreddit->description = $request->description;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 4a9aa119d6085d75b86b38cba17e6ea3f6f209c5
         $subbreddit->save();
 
         return $subbreddit;
@@ -47,7 +55,11 @@ class SubbredditsController extends Controller
         return \App\Subbreddit::with([
             'posts.comments.childComments',
             'user'
+<<<<<<< HEAD
         ])->find($id);
+=======
+            ])->find($id);
+>>>>>>> 4a9aa119d6085d75b86b38cba17e6ea3f6f209c5
     }
 
     /**
@@ -67,7 +79,10 @@ class SubbredditsController extends Controller
         } else {
             return response("Unauthorized", 403);
         }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 4a9aa119d6085d75b86b38cba17e6ea3f6f209c5
         return $subbreddit;
     }
 
@@ -85,6 +100,10 @@ class SubbredditsController extends Controller
         } else {
             return response("Unauthorized", 403);
         }
+<<<<<<< HEAD
         return $subbreddit;
+=======
+        return $subbreddit;    
+>>>>>>> 4a9aa119d6085d75b86b38cba17e6ea3f6f209c5
     }
 }

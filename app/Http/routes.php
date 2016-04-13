@@ -10,6 +10,7 @@
 | and give it the controller to call when that URI is requested.
 |
 */
+<<<<<<< HEAD
 Route::get('/', function () {
     return view('welcome');
 });
@@ -18,6 +19,9 @@ if (env('APP_DEBUG')) {
     // Route to view logs. Only for use in development
     Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
 }
+=======
+
+>>>>>>> 4a9aa119d6085d75b86b38cba17e6ea3f6f209c5
 
 /*
 |--------------------------------------------------------------------------
@@ -30,6 +34,7 @@ if (env('APP_DEBUG')) {
 |
 */
 
+<<<<<<< HEAD
 Route::group(['middleware' => 'web'], function () {
     Route::auth();
 
@@ -68,3 +73,26 @@ Route::group(['middleware' => 'web'], function () {
 });
 
 
+=======
+Route::group(['middleware' => ['web']], function () {
+    Route::auth();
+
+    // this is where our app lives
+    Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::resource('subbreddit', 'SubbredditsController',
+	['only' => ['index', 'show']]);	
+
+});
+
+Route::group(['middleware' => 'web'], function () {
+    Route::auth();
+
+    Route::get('/home', 'HomeController@index');
+
+    Route::resource('subbreddit', 'SubbredditsController',
+	['except' => ['create', 'edit']]);	
+});
+>>>>>>> 4a9aa119d6085d75b86b38cba17e6ea3f6f209c5

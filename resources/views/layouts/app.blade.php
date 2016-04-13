@@ -4,7 +4,11 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+<<<<<<< HEAD
     <meta name="csrf-token" content="{{ csrf_token() }}">
+=======
+
+>>>>>>> 4a9aa119d6085d75b86b38cba17e6ea3f6f209c5
     <title>Laravel</title>
 
     <!-- Fonts -->

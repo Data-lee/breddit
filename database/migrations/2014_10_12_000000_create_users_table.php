@@ -21,7 +21,10 @@ class CreateUsersTable extends Migration
             $table->timestamps();
         });
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 4a9aa119d6085d75b86b38cba17e6ea3f6f209c5
     /**
      * Reverse the migrations.
      *
@@ -31,4 +34,8 @@ class CreateUsersTable extends Migration
     {
         Schema::drop('users');
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 4a9aa119d6085d75b86b38cba17e6ea3f6f209c5

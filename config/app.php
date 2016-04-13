@@ -155,9 +155,13 @@ return [
         App\Providers\AuthServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+<<<<<<< HEAD
 
         'Spatie\Tail\TailServiceProvider',
         Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider::class,
+=======
+        'Spatie\Tail\TailServiceProvider',
+>>>>>>> 4a9aa119d6085d75b86b38cba17e6ea3f6f209c5
 
     ],
 
